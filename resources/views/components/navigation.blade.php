@@ -2,7 +2,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between content-center">
             <!-- Logo -->
-            <a class="flex-shrink-0 flex items-center" href="{{ route('profile',['id'=>Auth::id()]) }}">
+            <a class="flex-shrink-0 flex items-center" href="{{ route('home') }}">
                 <x-application-logo class="block h-8 w-auto fill-current text-gray-600" />
                 <div class="pl-4">
                     <h4 class="text-lg">{{ config('app.name','Laravel') }}</h4>

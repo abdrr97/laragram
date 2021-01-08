@@ -5,7 +5,7 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
-                    <a href="{{ route('profile',['id'=>Auth::id()]) }}" class="flex-shrink-0 flex items-center">
+                    <a href="{{ route('home') }}" class="flex-shrink-0 flex items-center">
                         <x-application-logo class="block h-10 w-auto fill-current text-gray-600" />
                         <div class="pl-4 ">
                             <h4>Laragram</h4>
@@ -15,7 +15,7 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('profile',['id'=>Auth::id()])" :active="request()->routeIs('profile') || request()->routeIs('dashboard')" class="text-lg">
+                    <x-nav-link :href="route('home')" :active="request()->routeIs('profile') || request()->routeIs('dashboard')" class="text-lg">
                         Laragram
                     </x-nav-link>
                 </div>

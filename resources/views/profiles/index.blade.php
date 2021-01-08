@@ -63,9 +63,9 @@
                     <figcaption class="font-medium">
                         <div class="w-8/12 mb-5 text-2xl flex justify-between">
                             {{ $user->username }}
-                            <x-button type="button" class=" capitalize bg-white text-black px-3">
-                                Edit Profile
-                            </x-button>
+                            <a href="{{ route('posts.create') }}" class="inline-flex items-center  py-2 border border-transparent rounded-md font-semibold text-xs tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 capitalize bg-white text-black px-3">
+                                Add post
+                            </a>
                             <x-button type="button" class=" capitalize bg-blue-500 hover:bg-blue-600 text-black px-3">
                                 Follow
                             </x-button>

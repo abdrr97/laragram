@@ -1,7 +1,10 @@
 <?php
 
 use App\Http\Controllers\ProfilesController;
+use App\Http\Controllers\PostsController;
 use Illuminate\Support\Facades\Route;
+
+require __DIR__ . '/auth.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -15,13 +18,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/profile/{id}', [ProfilesController::class, 'index'])->name('profile');
+    $profiles = App\Models\Profile::all();
+    return view('welcome', ['profiles' => $profiles]);
+})->name('home');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-require __DIR__ . '/auth.php';
+Route::get('/profile/{id}', [ProfilesController::class, 'index'])->name('profile');
+Route::get('/p/create', [PostsController::class, 'create'])->name('posts.create');
+Route::post('/p/create', [PostsController::class, 'store'])->name('posts.store');
