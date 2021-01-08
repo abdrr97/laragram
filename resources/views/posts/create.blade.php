@@ -6,7 +6,7 @@
         <div class="">
             <form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
-
+                <x-auth-validation-errors></x-auth-validation-errors>
                 <div class="p-4">
                     <x-label>Post Caption</x-label>
                     <x-input class="w-full" name="caption" type="text"></x-input>

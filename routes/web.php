@@ -27,5 +27,6 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 Route::get('/profile/{id}', [ProfilesController::class, 'index'])->name('profile');
+
 Route::get('/p/create', [PostsController::class, 'create'])->name('posts.create');
 Route::post('/p/create', [PostsController::class, 'store'])->name('posts.store');
