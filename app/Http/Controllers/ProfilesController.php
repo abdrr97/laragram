@@ -55,6 +55,7 @@ class ProfilesController extends Controller
      */
     public function edit(User $user)
     {
+        $this->authorize('update', $user->profile);
         return view('profiles.edit', compact('user'));
     }
 
@@ -67,14 +68,25 @@ class ProfilesController extends Controller
      */
     public function update(Request $request, User $user)
     {
+        $this->authorize('update', $user->profile);
+
         $data = $request->validate([
             'title' => 'required',
             'bio' => 'required',
             'url' => 'url',
-            // 'image'=>
+            'image' => '',
         ]);
-        $user->profile()->associate($data)->save();
-        return 'ff';
+        if (isset($request['image']))
+        {
+            $image = $request->file('image')->store('profile', 'public');
+
+            $array_image = ['image' => $image];
+        }
+        $user->profile->update(array_merge(
+            $data,
+            $array_image ?? []
+        ));
+        return redirect('/profile/' . auth()->user()->id);
     }
 
     /**

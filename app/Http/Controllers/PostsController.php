@@ -45,8 +45,8 @@ class PostsController extends Controller
             'caption' => 'required|max:255',
             'image' => 'required|image|mimes:jpeg,png,jpg',
         ]);
-
         $image = $request->file('image')->store('uploads', 'public');
+
         auth()->user()->posts()->create([
             'caption' => $validatedData['caption'],
             'image' => $image,
