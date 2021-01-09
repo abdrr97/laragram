@@ -42,7 +42,7 @@
                         </x-slot>
 
                         <x-slot name="content">
-                            <x-dropdown-link :href="route('profile',['id'=>auth()->user()->id])">
+                            <x-dropdown-link :href="route('profile',auth()->user())">
                                 View Profile
                             </x-dropdown-link>
                             <!-- Authentication -->

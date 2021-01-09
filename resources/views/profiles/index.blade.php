@@ -63,17 +63,21 @@
 
     <div class="max-w-6xl mx-auto sm:px-6 lg:px-8 mt-1 ">
         <div class="w-11/12 flex  px-10">
-            <figure class="flex justify-center p-8">
+            <figure class="flex justify-center p-8 w-full">
                 <img class="mx-auto bg-center w-40 h-40 rounded-full space-x-10 m-10 bg-cover bg-no-repeat "
                     src="https://tailwindcss.com/_next/static/media/sarah-dayan.a8ff3f1095a58085a82e3bb6aab12eb2.jpg"
                     alt="profile.png">
-                <div class=" pt-6 md:p-8 text-left space-y-4">
+                <div class="w-full pt-6 md:p-8 text-left space-y-4">
                     <figcaption class="font-medium">
                         <div class="w-8/12 mb-5 text-2xl flex justify-between">
                             {{ $user->username }}
                             <a href="{{ route('posts.create') }}"
                                 class="inline-flex items-center  py-2 border border-transparent rounded-md font-semibold text-xs tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 capitalize bg-white text-black px-3">
                                 Add post
+                            </a>
+                            <a href="{{ route('profile.edit',['user'=>$user]) }}"
+                                class="inline-flex items-center  py-2 border border-transparent rounded-md font-semibold text-xs tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 capitalize bg-white text-black px-3">
+                                Edit Profile
                             </a>
                             <x-button type="button" class=" capitalize bg-blue-500 hover:bg-blue-600 text-black px-3">
                                 Follow
@@ -91,7 +95,10 @@
                                 {{ $user->name }}
                             </p>
                             <div class="text-gray-500 ">
+                                {{ $user->profile->title ?? '' }}
+                                <br>
                                 {{ $user->profile->bio ?? '' }}
+                                <br>
                                 <a href="#" class="text-blue-800 font-semibold">
                                     {{ $user->profile->url ?? '' }}
                                 </a>
@@ -105,11 +112,10 @@
         <div class="pb-20">
             <div class="grid grid-cols-3 gap-10 z-10">
                 @foreach($user->posts as $post)
-                    <div class="">
-                        <x-image-post src="/storage/{{ $post->image }}" alt="{{ $post->caption }}">
-                        </x-image-post>
+                    <a href="{{ route('posts.show',$post->id) }}">
+                        <x-image-post src="/storage/{{ $post->image }}" alt="{{ $post->caption }}"></x-image-post>
                         {{ $post->caption }}
-                    </div>
+                    </a>
                 @endforeach
             </div>
         </div>

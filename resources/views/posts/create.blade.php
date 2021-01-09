@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="navigation">
         @include('layouts.navigation')
-    </x-slot>
+        </x-slot>
     <div class="max-w-6xl mx-auto sm:px-6 lg:px-8 mt-1 ">
         <div class="">
             <form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data">
