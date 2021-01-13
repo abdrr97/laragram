@@ -71,9 +71,10 @@
                                 Edit Profile
                             </a>
                             @endcan
-                            <x-button type="button" class=" capitalize bg-blue-500 hover:bg-blue-600 text-black px-3">
-                                Follow
-                            </x-button>
+                            <div id="app">
+                                <follow-button user-id="iijididi">
+                            </div>
+
                         </div>
                         <div class="w-5/12 my-5">
                             <ul class="flex justify-between ">
